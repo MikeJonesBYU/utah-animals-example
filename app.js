@@ -163,8 +163,10 @@
         var id = "f-" + attr.id + "-" + value[0];
         var row = el("div", { class: "option" });
         var box = el("input", { type: "checkbox", id: id, name: attr.id, value: value[0] });
+        var label = el("label", { for: id }, value[1] + " ");
+        label.appendChild(el("span", { class: "count", "data-attr": attr.id, "data-value": value[0] }));
         row.appendChild(box);
-        row.appendChild(el("label", { for: id }, value[1]));
+        row.appendChild(label);
         fieldset.appendChild(row);
       });
       form.appendChild(fieldset);
@@ -185,10 +187,28 @@
         };
       }).filter(function (s) { return s.ids.length > 0; });
 
+      function matches(animal, s) {
+        var vals = valuesOf(animal, s.attr);
+        return s.ids.some(function (id) { return vals.indexOf(id) !== -1; });
+      }
+
       var shown = inCategory.filter(function (animal) {
-        return selected.every(function (s) {
-          var vals = valuesOf(animal, s.attr);
-          return s.ids.some(function (id) { return vals.indexOf(id) !== -1; });
+        return selected.every(function (s) { return matches(animal, s); });
+      });
+
+      // Count next to each option: animals that would match if that option were checked,
+      // given the selections in the *other* filters.
+      filterAttrs.forEach(function (attr) {
+        var others = selected.filter(function (s) { return s.attr !== attr; });
+        var pool = inCategory.filter(function (animal) {
+          return others.every(function (s) { return matches(animal, s); });
+        });
+        attr.values.forEach(function (value) {
+          var n = pool.filter(function (animal) {
+            return valuesOf(animal, attr).indexOf(value[0]) !== -1;
+          }).length;
+          var span = form.querySelector(".count[data-attr='" + attr.id + "'][data-value='" + value[0] + "']");
+          span.textContent = "(" + n + ")";
         });
       });
 

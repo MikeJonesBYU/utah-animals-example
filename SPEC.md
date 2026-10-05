@@ -68,6 +68,7 @@ Size rule: **Small** = cat-sized or smaller; **Medium** = bigger than a cat, sma
 - Checkboxes. Several values can be selected within one filter.
 - Within one filter, an animal matches if it has **any** checked value.
 - Across filters, an animal must match **every** filter that has a checked value.
+- Each option shows a count, e.g. "Small (3)". The count is how many animals in the category would match if that option were checked, given what's already selected in the other filters. Counts update as filters change.
 - The list updates instantly whenever a box is checked or unchecked.
 - A "Clear filters" button unchecks everything.
 - Filters are not saved in the URL. Reloading or going back starts from a clean page.
