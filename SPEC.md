@@ -60,6 +60,7 @@ Size rule: **Small** = cat-sized or smaller; **Medium** = bigger than a cat, sma
 - One shared page template. It reads the category from the URL, e.g. `category.html?kind=birds` or `category.html?where=deserts`.
 - Header: "Utah Animals" and a breadcrumb (Home > Category name).
 - Left sidebar: checkbox filters for Where you'd find it, Size, and Visible feature. A filter is hidden on pages of its own scheme, so location pages show only Size and Visible feature.
+- A filter is also hidden when it can't narrow that page's list, meaning every animal on the page has the same value for it. Example: every fish is in "Rivers and lakes," so the Fish page has no "Where you'd find it" filter. This is worked out from the data each time the page loads. If no filters are left, the sidebar is hidden.
 - Main area: a result count ("Showing X of Y animals") and a grid of animal cards, sorted A to Z.
 - Cards are outlined boxes showing only the animal's name. Clicking a card does nothing.
 - An unknown category in the URL shows "Category not found" with a link home.

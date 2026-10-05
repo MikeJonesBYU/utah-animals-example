@@ -63,6 +63,7 @@ input[type=checkbox] { accent-color: #000; }
   gap: 16px;
   align-items: start;
 }
+.layout.no-filters { grid-template-columns: 1fr; }
 .filters { border: 1px solid #000; padding: 16px; }
 .filters fieldset { border: 1px solid #000; margin: 0 0 12px; padding: 8px 12px 12px; }
 .filters legend { padding: 0 4px; }

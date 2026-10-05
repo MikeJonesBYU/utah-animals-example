@@ -150,10 +150,24 @@
       return valuesOf(animal, category.attr).indexOf(category.value[0]) !== -1;
     }).sort(byName);
 
-    // Filters: every filter attribute except the one this page is organized by.
+    // Filters: every filter attribute except the one this page is organized by,
+    // and except any that can't narrow this page's list (e.g. every fish is in
+    // "Rivers and lakes", so that filter is left off the Fish page).
     var filterAttrs = data.attributes.filter(function (a) {
-      return a.asFilter && a.id !== category.attr.id;
+      if (!a.asFilter || a.id === category.attr.id) return false;
+      return a.values.some(function (value) {
+        var n = inCategory.filter(function (animal) {
+          return valuesOf(animal, a).indexOf(value[0]) !== -1;
+        }).length;
+        return n > 0 && n < inCategory.length;
+      });
     });
+
+    // No useful filters at all: drop the sidebar.
+    if (filterAttrs.length === 0) {
+      document.querySelector(".filters").hidden = true;
+      document.querySelector(".layout").classList.add("no-filters");
+    }
 
     var form = document.getElementById("filters");
     filterAttrs.forEach(function (attr) {
