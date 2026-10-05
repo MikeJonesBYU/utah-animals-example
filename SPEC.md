@@ -94,4 +94,4 @@ Size rule: **Small** = cat-sized or smaller; **Medium** = bigger than a cat, sma
 
 ## Animals
 
-28 animals from the card sort deck. Black bear and mountain lion have no kind and are reached through location only.
+28 animals from the card sort deck, plus 20 more common Utah animals (48 total). Black bear and mountain lion have no kind and are reached through location only.
