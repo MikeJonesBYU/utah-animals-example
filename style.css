@@ -43,11 +43,9 @@ input[type=checkbox] { accent-color: #000; }
 /* ---- Landing page ---- */
 .schemes {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 32px;
 }
-.scheme { border: 1px solid #000; padding: 16px; }
-.category-buttons { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.category-buttons { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .button {
   display: block;
   border: 1px solid #000;
@@ -107,5 +105,5 @@ button {
 
 /* ---- Phone width ---- */
 @media (max-width: 700px) {
-  .schemes, .layout { grid-template-columns: 1fr; }
+  .layout { grid-template-columns: 1fr; }
 }

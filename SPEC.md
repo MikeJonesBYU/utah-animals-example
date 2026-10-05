@@ -12,7 +12,7 @@ A low-fi clickable wireframe uses boxes for content, real labels for navigation,
 - One font: Arial / Helvetica.
 - Headings are larger than body text. Size is their only difference: no bold, italics, or other styling.
 - Plain outlined boxes. No images and no logo. "Utah Animals" appears in plain text at the top of every page.
-- Designed for desktop and usable at phone width, where columns stack.
+- Designed for desktop and usable at phone width, where the category page's filters stack above the cards.
 
 ## Information architecture
 
@@ -51,7 +51,8 @@ Size rule: **Small** = cat-sized or smaller; **Medium** = bigger than a cat, sma
 
 ### Landing page (`index.html`)
 
-- Two groups of buttons side by side, headed "Kind of animal" and "Where you'd find it." They stack on a phone.
+- Two groups of buttons, stacked: "Kind of animal" on top, "Where you'd find it" below. Each group has a heading and no surrounding box.
+- Within each group, the buttons run horizontally in a row and wrap onto the next line when they run out of room.
 - One button per category. Each opens that category's page.
 
 ### Category page (`category.html?<scheme>=<value>`)
