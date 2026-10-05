@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Utah Animals</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="category">
+  <div class="wrap">
+    <header class="site-header">
+      <p class="site-title">Utah Animals</p>
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+          <li><a href="index.html">Home</a></li>
+          <li id="crumb-current" aria-current="page"></li>
+        </ol>
+      </nav>
+    </header>
+    <main>
+      <h1 id="page-title"></h1>
+      <div class="layout">
+        <aside class="filters" aria-label="Filters">
+          <h2>Filter</h2>
+          <form id="filters"></form>
+        </aside>
+        <section class="results" aria-label="Animals">
+          <p class="result-count" id="result-count" aria-live="polite"></p>
+          <ul class="cards" id="cards"></ul>
+        </section>
+      </div>
+    </main>
+  </div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

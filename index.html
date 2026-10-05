@@ -4,18 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Utah Animals</title>
-  <style>
-    :root { --bg: #faf7f2; --fg: #2b2b2b; --accent: #b5562b; }
-    @media (prefers-color-scheme: dark) { :root { --bg: #1c1b1a; --fg: #ece8e1; --accent: #e08a5c; } }
-    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: var(--bg); color: var(--fg);
-           font-family: system-ui, -apple-system, sans-serif; padding: 16px; box-sizing: border-box; text-align: center; }
-    h1 { color: var(--accent); margin-bottom: .25em; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <main>
-    <h1>Utah Animals</h1>
-    <p>An animal classification example. Coming soon.</p>
-  </main>
+<body data-page="home">
+  <div class="wrap">
+    <header class="site-header">
+      <p class="site-title">Utah Animals</p>
+    </header>
+    <main>
+      <h1>Find an animal</h1>
+      <div class="schemes" id="schemes"></div>
+    </main>
+  </div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

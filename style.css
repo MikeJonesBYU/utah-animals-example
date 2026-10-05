@@ -1,0 +1,111 @@
+/* Low-fi wireframe: black and white only, one font, plain boxes.
+   Headings differ from body text by size only. */
+
+* { box-sizing: border-box; }
+
+html { font-size: 16px; }
+
+body {
+  margin: 0;
+  padding: 16px;
+  background: #fff;
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  line-height: 1.4;
+}
+
+h1, h2, legend, strong, b, button, label, a {
+  font-weight: normal;
+  font-style: normal;
+}
+h1 { font-size: 1.75rem; margin: 0 0 16px; }
+h2 { font-size: 1.3rem; margin: 0 0 12px; }
+
+a { color: #000; }
+
+:focus-visible { outline: 2px solid #000; outline-offset: 2px; }
+
+input[type=checkbox] { accent-color: #000; }
+
+.wrap { max-width: 1100px; margin: 0 auto; }
+
+/* ---- Header ---- */
+.site-header {
+  border: 1px solid #000;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+.site-title { margin: 0; }
+.breadcrumb { margin: 12px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.breadcrumb li + li::before { content: ">"; margin-right: 8px; }
+
+/* ---- Landing page ---- */
+.schemes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.scheme { border: 1px solid #000; padding: 16px; }
+.category-buttons { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.button {
+  display: block;
+  border: 1px solid #000;
+  padding: 12px;
+  text-decoration: none;
+  background: #fff;
+  color: #000;
+}
+.button:hover { text-decoration: underline; }
+
+/* ---- Category page ---- */
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.filters { border: 1px solid #000; padding: 16px; }
+.filters fieldset { border: 1px solid #000; margin: 0 0 12px; padding: 8px 12px 12px; }
+.filters legend { padding: 0 4px; }
+.option { display: flex; align-items: center; gap: 8px; padding: 2px 0; }
+.option input { margin: 0; }
+
+button {
+  font: inherit;
+  color: #000;
+  background: #fff;
+  border: 1px solid #000;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.results { border: 1px solid #000; padding: 16px; min-height: 200px; }
+.result-count { margin: 0 0 12px; }
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+.card {
+  border: 1px solid #000;
+  padding: 16px;
+  min-height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ---- Data problems banner ---- */
+.problems { border: 3px double #000; padding: 12px 16px; margin: 0 0 16px; }
+.problems p { margin: 0 0 8px; }
+.problems ul { margin: 0; padding-left: 20px; }
+
+/* ---- Phone width ---- */
+@media (max-width: 700px) {
+  .schemes, .layout { grid-template-columns: 1fr; }
+}
