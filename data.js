@@ -128,4 +128,84 @@ window.SITE_DATA = {
     { name: "Western fence lizard", kind: ["reptiles"], where: ["deserts", "mountains-forests"], size: "small", feature: ["scales"] },
     { name: "Yellow-bellied marmot", kind: ["small-mammals"], where: ["mountains-forests"], size: "small", feature: ["fur"] },
   ],
+
+  // TASKS for the tree test (index.html?test). Each one:
+  //   id                   short key, shown in the results
+  //   text                 what the participant is asked to do
+  //   targets              animal name(s); clicking any of these cards completes the task
+  //   predictedFirstClick  the landing-page button you expect most people to click first
+  //   rationale            your note on why the task is in the test (participants never see it)
+  // Copied from utah-animals-tree-test-tasks.csv.
+  tasks: [
+    {
+      id: "1",
+      text: "A red fox has been trotting through your neighborhood at dusk. Find out more about it.",
+      targets: ["Red fox"],
+      predictedFirstClick: "Small mammals",
+      rationale: "Card sort's systematic splitter (2 sorts by kind, 2 by role). Does Small mammals hold it, or does location win?",
+    },
+    {
+      id: "2",
+      text: "Your family is camping in the Uintas this weekend and you heard cougars live there. Find out more about cougars.",
+      targets: ["Mountain lion"],
+      predictedFirstClick: "Mountains and forests",
+      rationale: "Mountain lion has no kind, so only location reaches it. Tests the missing Predators view; uses the user's word 'cougar'.",
+    },
+    {
+      id: "3",
+      text: "A neighbor who keeps beehives gave you a jar of honey. Find the animal that made it.",
+      targets: ["Honeybee"],
+      predictedFirstClick: "Insects and other small creatures",
+      rationale: "Biggest scatter card (5 homes in 6 sorts). Tests whether 'kept' or 'kind' pulls harder.",
+    },
+    {
+      id: "4",
+      text: "You caught a cutthroat at Strawberry Reservoir and want to know if it's the native kind. Find it.",
+      targets: ["Bonneville cutthroat trout"],
+      predictedFirstClick: "Fish",
+      rationale: "Second scatter card; joined reptiles under 'scales' twice. Baseline for a one-path kind category.",
+    },
+    {
+      id: "5",
+      text: "You're planning a trip to Antelope Island to see the buffalo herd. Find out more about them.",
+      targets: ["American bison"],
+      predictedFirstClick: "Deer, elk, and other antlered animals",
+      rationale: "Bison has horns, not antlers. Tests whether the antlered label still works and whether 'island' lures people to Rivers and lakes.",
+    },
+    {
+      id: "6",
+      text: "You heard a buzzing rattle under a bush while hiking near Moab. Find the animal that made the sound.",
+      targets: ["Great Basin rattlesnake"],
+      predictedFirstClick: "Reptiles",
+      rationale: "Polyhierarchy check: kind (Reptiles) vs. place (Deserts) as first click; both are correct paths.",
+    },
+    {
+      id: "7",
+      text: "You're thinking about keeping a few hens at home for fresh eggs. Find out more about them.",
+      targets: ["Chicken"],
+      predictedFirstClick: "Farm animals and pets",
+      rationale: "Domestic was the loudest group (9 of 10). Chicken is filed under two kinds; tests which one people expect.",
+    },
+    {
+      id: "8",
+      text: "Your dog came back from a Wasatch hike with quills stuck in its nose. Find the animal that did it.",
+      targets: ["Porcupine"],
+      predictedFirstClick: "Small mammals",
+      rationale: "Card sort's vocabulary casualty (orphaned by 'rodents'). Tests whether Small mammals is the home people expect.",
+    },
+    {
+      id: "9",
+      text: "Seagulls keep swooping at your lunch at Liberty Park. Find out more about them.",
+      targets: ["California gull"],
+      predictedFirstClick: "Birds",
+      rationale: "Strong cluster (8 of 10 made Birds). Expected easy win; a control task that uses everyday 'seagull' language.",
+    },
+    {
+      id: "10",
+      text: "Your brother-in-law drew a moose tag this fall. Find out more about the animal he'll be hunting.",
+      targets: ["Moose"],
+      predictedFirstClick: "Deer, elk, and other antlered animals",
+      rationale: "Core of a 6/6 cluster. Contrast with task 5: same category, an animal that actually has antlers.",
+    },
+  ],
 };

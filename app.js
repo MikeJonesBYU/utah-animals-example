@@ -74,6 +74,28 @@
         if (!known) problems.push(name + ": unknown attribute \"" + key + "\"");
       });
     });
+
+    // Tree-test tasks: targets must be animals, predictions must be landing-page buttons.
+    var buttonLabels = [];
+    data.attributes.filter(function (a) { return a.onHome; }).forEach(function (attr) {
+      attr.values.forEach(function (value) { buttonLabels.push(value[1]); });
+    });
+    var seenTask = {};
+    (data.tasks || []).forEach(function (task, i) {
+      var name = "Task " + (task.id != null && task.id !== "" ? task.id : "#" + (i + 1));
+      if (task.id == null || task.id === "") problems.push(name + ": has no id");
+      else if (seenTask[task.id]) problems.push(name + ": id used more than once");
+      seenTask[task.id] = true;
+      if (!task.text) problems.push(name + ": has no text");
+      var targets = Array.isArray(task.targets) ? task.targets : [];
+      if (!targets.length) problems.push(name + ": needs a list of at least one target animal");
+      targets.forEach(function (t) {
+        if (!seen[t]) problems.push(name + ": target \"" + t + "\" is not an animal");
+      });
+      if (buttonLabels.indexOf(task.predictedFirstClick) === -1) {
+        problems.push(name + ": predicted first click \"" + task.predictedFirstClick + "\" is not a landing-page button");
+      }
+    });
     return problems;
   }
 
@@ -226,9 +248,17 @@
         });
       });
 
+      // During a tree test, cards are buttons the participant can click.
+      var clickable = window.TreeTest && window.TreeTest.cardsClickable();
       grid.innerHTML = "";
       shown.forEach(function (animal) {
-        grid.appendChild(el("li", { class: "card" }, animal.name));
+        if (clickable) {
+          var slot = el("li", { class: "card-slot" });
+          slot.appendChild(el("button", { type: "button", class: "card", "data-name": animal.name }, animal.name));
+          grid.appendChild(slot);
+        } else {
+          grid.appendChild(el("li", { class: "card" }, animal.name));
+        }
       });
       countEl.textContent = "Showing " + shown.length + " of " + inCategory.length +
         (inCategory.length === 1 ? " animal" : " animals");
@@ -248,6 +278,7 @@
     var page = document.body.getAttribute("data-page");
     if (page === "home") buildHome();
     if (page === "category") buildCategory();
+    if (window.TreeTest) window.TreeTest.init();
     showProblems(validate());
   });
 })();
